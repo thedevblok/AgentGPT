@@ -12,8 +12,7 @@ RUN npm ci
 
 # Copy the rest of the application code
 COPY . .
-RUN mv .env.docker .env  \
-    && sed -ie 's/postgresql/sqlite/g' prisma/schema.prisma \
+RUN sed -ie 's/postgresql/sqlite/g' prisma/schema.prisma \
    && sed -ie 's/@db.Text//' prisma/schema.prisma
 
 # Expose the port the app will run on
